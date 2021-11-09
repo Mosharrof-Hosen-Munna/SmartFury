@@ -1,0 +1,24 @@
+.common_button {
+  border: none;
+  outline: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-weight: 600;
+  background-color: #0fb9b1;
+  transition: 0.3s;
+}
+.common_button.button_lg {
+  padding: 10px 16px;
+  font-size: 20px;
+}
+.common_button.button_sm {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+.common_button:hover {
+  background-color: #00787b;
+}
+.common_button:active {
+  background-color: #0fb9b1;
+}
