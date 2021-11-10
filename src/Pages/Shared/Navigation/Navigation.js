@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../../../index.css";
+import { ButtonCommon } from "../CustomButton/CustomButton";
 
 const Navigation = () => {
   return (
@@ -29,7 +30,7 @@ const Navigation = () => {
                 className="nav-link"
                 to="/explore"
               >
-                Link
+                Explore
               </NavLink>
               <NavLink
                 exact
@@ -40,6 +41,11 @@ const Navigation = () => {
                 Dashboard
               </NavLink>
             </Nav>
+            <div>
+              <Link to="/account/login">
+                <ButtonCommon>Login</ButtonCommon>
+              </Link>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

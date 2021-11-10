@@ -1,0 +1,42 @@
+.discount {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.product-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.product-card {
+  border-radius: 0px 0px 10px 10px;
+}
+.product-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.product-title {
+  font-size: 20px !important;
+}
+
+@media (max-width: 667px) {
+  .product-title {
+    font-size: 16px !important;
+    margin-bottom: 2px !important;
+  }
+  .product-desc {
+    font-size: 12px;
+    margin: 0;
+    line-height: 13px;
+  }
+  .product-current-price {
+    font-size: 14px !important;
+  }
+  .product-discount-price {
+    font-size: 12px !important;
+  }
+  .product-img {
+    height: 180px !important;
+  }
+}

@@ -16,8 +16,8 @@ export const ButtonCommon = ({ children, btnSize, className, ...rest }) => {
   );
 };
 
-const Button = () => {
+const CustomButton = () => {
   return <div></div>;
 };
 
-export default Button;
+export default CustomButton;

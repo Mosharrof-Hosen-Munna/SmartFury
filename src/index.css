@@ -15,6 +15,9 @@ code {
 .text-cyan {
   color: #01a3a4 !important;
 }
+.text-cyan-900 {
+  color: #00787b;
+}
 .bg-cyan {
   background-color: #01a3a4;
 }

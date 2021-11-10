@@ -1,0 +1,5 @@
+.review-card:hover {
+  transition: 0.3s;
+  background-color: #01a3a4;
+  color: white;
+}
