@@ -23,6 +23,7 @@ const order = {
   address,
   quantity,
   totalPrice,
+  orderStatus,
 };
 const review = {
   uid,
