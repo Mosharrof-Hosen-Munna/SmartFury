@@ -16,25 +16,60 @@ initializeAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
 
-  const handleGoogleSignIn = () => {
-    return signInWithPopup(auth, googleProvider);
+  const handleGoogleSignIn = (history, location) => {
+    setLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        setUser(result.user);
+        history.push(location.state?.from || "/home");
+        setError({});
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   };
 
-  const handleEmailPasswordRegister = (email, password, name) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const handleEmailPasswordRegister = (
+    email,
+    password,
+    name,
+    history,
+    location
+  ) => {
+    setLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        setUserName(name);
+        const LoginUser = result.user;
+        setUser(LoginUser);
+        history.push(location.state?.from || "/home");
+        setError({});
+      })
+      .catch((e) => {
+        console.log(e);
+        setError({ email: "User already exits this email" });
+      })
+      .finally(() => setLoading(false));
   };
 
-  const handleEmailPasswordLogin = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  const handleEmailPasswordLogin = (email, password, history, location) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        setUser(result.user);
+        history.push(location.state?.from || "/home");
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   };
 
   const setUserName = (name) => {
-    updateProfile(auth.currentUser, { displayName: name }).then((result) => {});
+    updateProfile(auth.currentUser, { displayName: name })
+      .then((result) => {})
+      .catch((err) => console.log(err));
   };
 
   const logOut = () => {

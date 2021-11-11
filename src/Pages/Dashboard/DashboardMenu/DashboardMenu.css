@@ -1,0 +1,35 @@
+.aside-bar-menu {
+  list-style: none;
+}
+.dashboard-aside {
+  position: fixed;
+  height: 100vh;
+  background-color: white;
+}
+/* .aside-bar-menu li {
+  background-color: crimson;
+} */
+.aside-bar-menu li a {
+  width: 100%;
+  padding: 8px 12px;
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+  color: black;
+}
+.aside-bar-menu li a:hover {
+  color: white !important;
+  background-color: #01a3a4;
+}
+.aside-item-active {
+  color: white !important;
+  background-color: #01a3a4;
+}
+.dashboard-logout {
+  cursor: pointer;
+}
+.menubars {
+  cursor: pointer;
+}

@@ -6,10 +6,10 @@ const Products = () => {
   return (
     <section className="py-4">
       <Container>
-        <h1 className="text-cyan mb-5 section-header position-relative">
+        <h2 className="text-cyan mb-5 section-header position-relative">
           Recent Products
-        </h1>
-        <Row xs={2} md={3} lg={4} className="g-4 pt-5">
+        </h2>
+        <Row xs={2} md={3} lg={4} className="g-4 pt-4">
           <Product></Product>
           <Product></Product>
           <Product></Product>

@@ -1,9 +1,13 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
-import notFound from "../../images/notFound.svg";
+import { useHistory } from "react-router-dom";
+import notFound from "../../Images/notFound.svg";
 
 const NotFound = () => {
-  const handleGoBack = () => {};
+  const history = useHistory();
+  const handleGoBack = () => {
+    history.goBack();
+  };
   return (
     <Container>
       <div className="text-center py-5 mt-5">

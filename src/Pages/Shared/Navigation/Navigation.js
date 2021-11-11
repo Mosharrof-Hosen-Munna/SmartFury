@@ -1,10 +1,12 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import "../../../index.css";
 import { ButtonCommon } from "../CustomButton/CustomButton";
 
 const Navigation = () => {
+  const { user, logOut } = useAuth();
   return (
     <div>
       <Navbar className="shadow fw-bold" bg="white" expand="lg">
@@ -41,10 +43,17 @@ const Navigation = () => {
                 Dashboard
               </NavLink>
             </Nav>
+            <div>{user?.displayName}</div>
             <div>
-              <Link to="/account/login">
-                <ButtonCommon>Login</ButtonCommon>
-              </Link>
+              {user ? (
+                <Button onClick={logOut} variant="danger">
+                  Logout
+                </Button>
+              ) : (
+                <Link to="/account/login">
+                  <ButtonCommon>Login</ButtonCommon>
+                </Link>
+              )}
             </div>
           </Navbar.Collapse>
         </Container>

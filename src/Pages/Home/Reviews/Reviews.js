@@ -6,9 +6,9 @@ const Reviews = () => {
   return (
     <section className="py-5">
       <Container>
-        <h1 className="text-cyan mb-5 section-header position-relative">
+        <h2 className="text-cyan mb-5 section-header position-relative">
           Recent Reviews
-        </h1>
+        </h2>
         <Row lg={3} md={2} xs={1} className="py-5 g-4">
           <Review></Review>
           <Review></Review>

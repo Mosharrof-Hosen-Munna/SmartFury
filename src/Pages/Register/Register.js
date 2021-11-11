@@ -15,10 +15,11 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
-const Login = () => {
-  const [loginData, setLoginData] = useState({});
+const Register = () => {
+  const [registerData, setRegisterData] = useState({});
+  const [validationError, setValidationError] = useState({});
 
-  const { handleGoogleSignIn, handleEmailPasswordLogin } = useAuth();
+  const { handleGoogleSignIn, handleEmailPasswordRegister } = useAuth();
 
   const location = useLocation();
   const history = useHistory();
@@ -26,21 +27,39 @@ const Login = () => {
   const handleOnChange = (e) => {
     const field = e.target.name;
     const value = e.target.value;
-    const newLoginData = { ...loginData };
-    newLoginData[field] = value;
-    setLoginData(newLoginData);
+    const newRegisterData = { ...registerData };
+    newRegisterData[field] = value;
+    setRegisterData(newRegisterData);
   };
 
-  const handleEmailLogin = (e) => {
-    e.preventDefault();
-    if (loginData.email && loginData.password) {
-      handleEmailPasswordLogin(
-        loginData.email,
-        loginData.password,
-        history,
-        location
-      );
+  const validationRegister = (name, password) => {
+    const errorMessage = {};
+    if (name.length < 5 || name.length > 15) {
+      errorMessage.name = "Name Must be between 5 to 15 characters";
     }
+    if (password.length < 6 || password.length > 14) {
+      errorMessage.password = "Password Must be between 6 to 14 characters";
+    }
+    return errorMessage;
+  };
+
+  const handleEmailRegister = (e) => {
+    e.preventDefault();
+    const errorMessage = validationRegister(
+      registerData?.name,
+      registerData?.password
+    );
+    if (errorMessage.name || errorMessage.password) {
+      setValidationError(errorMessage);
+      return;
+    }
+    handleEmailPasswordRegister(
+      registerData?.email,
+      registerData?.password,
+      registerData?.name,
+      history,
+      location
+    );
   };
 
   return (
@@ -63,8 +82,22 @@ const Login = () => {
               md={7}
               className="mx-auto bg-white rounded shadow p-4"
             >
-              <h3 className="text-cyan text-center mb-4">Login your Account</h3>
-              <form onSubmit={handleEmailLogin}>
+              <h3 className="text-cyan text-center mb-4">
+                Register your Account
+              </h3>
+              <form onSubmit={handleEmailRegister}>
+                <FloatingLabel
+                  controlId="floatingName"
+                  label="Your Name"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    name="name"
+                    type="name"
+                    onChange={handleOnChange}
+                    placeholder="Your Name"
+                  />
+                </FloatingLabel>
                 <FloatingLabel
                   controlId="floatingInput"
                   label="Email address"
@@ -86,7 +119,7 @@ const Login = () => {
                   />
                 </FloatingLabel>
                 <ButtonCommon type="submit" className="w-100 mt-3">
-                  Login
+                  Register
                 </ButtonCommon>
               </form>
               <h4 className="text-center  text-secondary"> or</h4>
@@ -102,15 +135,15 @@ const Login = () => {
                 Google Sign In
               </Button>
               <Link
-                to="/account/register"
-                className="text-cyan mt-4 d-block text-decoration-none   text-center"
+                to="/account/login"
+                className="text-cyan mt-4 d-block text-decoration-none  text-center"
               >
                 <p>
                   <span className="text-dark text-decoration-none ">
-                    New user?
+                    Already have an account?
                   </span>{" "}
                   <span className="text-decoration-underline">
-                    Please Register
+                    Please Login
                   </span>
                 </p>
               </Link>
@@ -123,4 +156,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

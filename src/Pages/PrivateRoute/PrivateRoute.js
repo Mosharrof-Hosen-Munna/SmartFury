@@ -31,7 +31,15 @@ const PrivateRoute = ({ children, ...rest }) => {
 };
 
 export const AuthenticationPrivateRoute = ({ children, ...rest }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="text-center mx-auto py-5">
+        <Spinner animation="border" variant="danger" />
+      </div>
+    );
+  }
   return (
     <Route
       {...rest}

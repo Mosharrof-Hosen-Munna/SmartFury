@@ -1,3 +1,4 @@
+import NotFound from "./Pages/NotFound/NotFound";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,11 +10,18 @@ import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import Explore from "./Pages/Explore/Explore";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import ScrollToTop from "./utils/ScrollToTop";
+import Register from "./Pages/Register/Register";
+import PrivateRoute, {
+  AuthenticationPrivateRoute,
+} from "./Pages/PrivateRoute/PrivateRoute";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Switch>
           <Route exact path="/">
             <Redirect to="/home" />
@@ -24,8 +32,17 @@ function App() {
           <Route exact path="/explore">
             <Explore></Explore>
           </Route>
-          <Route path="/account/login">
+          <PrivateRoute path="/dashboard">
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+          <AuthenticationPrivateRoute path="/account/login">
             <Login></Login>
+          </AuthenticationPrivateRoute>
+          <AuthenticationPrivateRoute path="/account/register">
+            <Register></Register>
+          </AuthenticationPrivateRoute>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
