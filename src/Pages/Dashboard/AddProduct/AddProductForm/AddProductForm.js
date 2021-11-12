@@ -1,14 +1,18 @@
 import React from "react";
-import { Col, Form, Row } from "react-bootstrap";
+import { Alert, Col, Form, Row } from "react-bootstrap";
 import { ButtonCommon } from "../../../Shared/CustomButton/CustomButton";
 
 const AddProductForm = ({
   handleChange,
   handleProductSubmit,
   productError,
+  isSuccess,
 }) => {
   return (
     <Col lg={7} xs={11} md={8} className="mx-auto">
+      {isSuccess && (
+        <Alert variant="success">New product create successful</Alert>
+      )}
       <Form onSubmit={handleProductSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
@@ -64,6 +68,20 @@ const AddProductForm = ({
             {productError.category && (
               <Form.Text id="formName" className="text-danger">
                 {productError.category}
+              </Form.Text>
+            )}
+          </Form.Group>
+          <Form.Group as={Col} controlId="quantity">
+            <Form.Label>Total Quantity</Form.Label>
+            <Form.Control
+              name="quantity"
+              onChange={handleChange}
+              type="number"
+              required
+            />
+            {productError.quantity && (
+              <Form.Text id="formName" className="text-danger">
+                {productError.quantity}
               </Form.Text>
             )}
           </Form.Group>

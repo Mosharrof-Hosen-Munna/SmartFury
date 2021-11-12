@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import useAuth from "../../../Hooks/useAuth";
 import AddProductForm from "./AddProductForm/AddProductForm";
@@ -9,6 +9,13 @@ const AddProduct = () => {
   const [productError, setProductError] = useState({});
 
   const { user } = useAuth();
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsSuccess(false);
+    }, 4000);
+  }, [isSuccess]);
 
   const handleChange = (e) => {
     const field = e.target.name;
@@ -18,7 +25,7 @@ const AddProduct = () => {
     setProductData(newProductData);
   };
 
-  const productValidation = (category, mainPrice, discountPrice) => {
+  const productValidation = (category, mainPrice, discountPrice, quantity) => {
     const error = {};
     if (category === "Select Category") {
       error.category = "Please select a valid category";
@@ -33,6 +40,9 @@ const AddProduct = () => {
       error.discountPrice =
         "Please provide a positive number or less than main price";
     }
+    if (quantity < 0) {
+      error.quantity = "Provide a valid quantity of product";
+    }
     return error;
   };
 
@@ -41,11 +51,12 @@ const AddProduct = () => {
     const errorMessage = productValidation(
       productData.category,
       productData.mainPrice,
-      productData.discountPrice
+      productData.discountPrice,
+      productData.quantity
     );
-    const { category, mainPrice, discountPrice } = errorMessage;
+    const { category, mainPrice, discountPrice, quantity } = errorMessage;
 
-    if (category || mainPrice || discountPrice) {
+    if (category || mainPrice || discountPrice || quantity) {
       setProductError(errorMessage);
       return;
     } else {
@@ -59,8 +70,9 @@ const AddProduct = () => {
         description: productData.description,
         imgUrl: productData.imageUrl,
         category: productData.category,
-        mainPrice: productData.mainPrice,
-        discountPrice: productData.discountPrice,
+        mainPrice: parseInt(productData.mainPrice),
+        discountPrice: parseInt(productData.discountPrice),
+        quantity: parseInt(productData.quantity),
         discountPercent: Math.ceil(discount),
         reviews: [],
         uid: user.uid,
@@ -71,6 +83,8 @@ const AddProduct = () => {
         .then((res) => {
           if (res.data.insertedId) {
             e.target.reset();
+            setProductError({});
+            setIsSuccess(true);
           }
         })
         .catch((err) => console.log(err));
@@ -81,6 +95,8 @@ const AddProduct = () => {
     <div className="mt-4">
       <h3 className="text-cyan-900 text-center py-3">Add a new Product</h3>
       <AddProductForm
+        isSuccess={isSuccess}
+        setIsSuccess={setIsSuccess}
         handleProductSubmit={handleProductSubmit}
         handleChange={handleChange}
         productError={productError}

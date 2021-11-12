@@ -3,37 +3,47 @@ import { Card, Col } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import "./Product.css";
 import { Link } from "react-router-dom";
-const Product = () => {
+const Product = ({ product }) => {
+  const {
+    _id,
+    imgUrl,
+    description,
+    discountPrice,
+    mainPrice,
+    discountPercent,
+    ratings,
+  } = product;
+
+  console.log(product);
+
   return (
     <Col>
-      <Link to="/products/" className="text-decoration-none text-dark">
+      <Link to={`/product/${_id}`} className="text-decoration-none text-dark">
         <Card className="h-100 border-0 product-card">
           <Card.Img
-            style={{ height: "250px" }}
+            src={imgUrl}
             variant="top"
-            className="img-fluid product-img position-relative px-4"
-            src="https://demo.xpeedstudio.com/marketov2/watch/wp-content/uploads/sites/14/2018/10/banner_img2-min.png"
+            className="img-fluid w-100 product-img position-relative "
           />
           <span className="bg-cyan px-2 discount text-white py-1 fw-bold">
-            -25%
+            -{discountPercent}%
           </span>
-          <Card.Body>
-            <Card.Text className="product-desc mb-1  text-secondary">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content. Some quick example text to build on
-              the card title and make up the bulk of the card's content.
-            </Card.Text>
-            <div className="d-block mb-1">
-              <span className="text-cyan product-current-price">৳ 18000 </span>
+          <Card.Body className="p-1 py-2 p-md-2">
+            <Card.Text className="product-desc mb-1 ">{description}</Card.Text>
+            <div className="d-block d-flex align-items-center mb-1">
+              <span className="text-cyan me-2 fs-5 product-current-price">
+                ৳ {discountPrice}
+                {"  "}
+              </span>
               <span className="text-secondary product-discount-price  text-decoration-line-through">
-                ৳ 22000
+                ৳ {mainPrice}
               </span>
             </div>
             <div className="d-flex align-items-center">
               <ReactStars
                 count={5}
                 value={4}
-                size={24}
+                size={20}
                 edit={false}
                 activeColor="#ffd700"
                 className="fs-2 m-0 mx-auto"
