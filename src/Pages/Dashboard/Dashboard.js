@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Offcanvas, Button } from "react-bootstrap";
 import {
   Switch,
@@ -18,6 +18,8 @@ import ManageOrders from "./ManageOrders/ManageOrders";
 import ManageProducts from "./ManageProducts/ManageProducts";
 import MyOrders from "./MyOrders/MyOrders";
 import Payment from "./Payment/Payment";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import axios from "axios";
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -46,7 +48,7 @@ const Dashboard = () => {
         <div className="w-100">
           <div className="bg-cyan w-100 text-white align-items-center d-flex justify-content-between p-2">
             <div>
-              <h4 className="d-flex">
+              <h5 className="d-flex">
                 <div className="d-block mx-2 d-lg-none">
                   <FontAwesomeIcon
                     onClick={handleShow}
@@ -55,7 +57,7 @@ const Dashboard = () => {
                   />
                 </div>
                 My Dashboard
-              </h4>
+              </h5>
             </div>
             <div className="d-flex align-items-center">
               <h6 className="me-2"> {user?.displayName}</h6>
@@ -102,18 +104,18 @@ const Dashboard = () => {
             <Route path={`${path}/giveReview`}>
               <GiveReview></GiveReview>
             </Route>
-            <Route path={`${path}/manageOrders`}>
+            <AdminRoute path={`${path}/manageOrders`}>
               <ManageOrders></ManageOrders>
-            </Route>
-            <Route path={`${path}/manageProducts`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/manageProducts`}>
               <ManageProducts></ManageProducts>
-            </Route>
-            <Route path={`${path}/makeAdmin`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/makeAdmin`}>
               <MakeAdmin></MakeAdmin>
-            </Route>
-            <Route path={`${path}/addProduct`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/addProduct`}>
               <AddProduct></AddProduct>
-            </Route>
+            </AdminRoute>
           </Switch>
         </div>
       </div>

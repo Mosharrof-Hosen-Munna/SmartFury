@@ -1,8 +1,6 @@
 import React from "react";
-import { Card, Col, Button } from "react-bootstrap";
-import { ButtonCommon } from "../CustomButton/CustomButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { Card, Col } from "react-bootstrap";
+import ReactStars from "react-rating-stars-component";
 import "./Product.css";
 import { Link } from "react-router-dom";
 const Product = () => {
@@ -20,7 +18,6 @@ const Product = () => {
             -25%
           </span>
           <Card.Body>
-            <Card.Title className="product-title">Relogio Faminino</Card.Title>
             <Card.Text className="product-desc mb-1  text-secondary">
               Some quick example text to build on the card title and make up the
               bulk of the card's content. Some quick example text to build on
@@ -32,10 +29,17 @@ const Product = () => {
                 ৳ 22000
               </span>
             </div>
-            {[...Array(4).keys()].map((rate) => (
-              <FontAwesomeIcon className="text-warning me-1" icon={faStar} />
-            ))}
-            <span>(4.5)</span>
+            <div className="d-flex align-items-center">
+              <ReactStars
+                count={5}
+                value={4}
+                size={24}
+                edit={false}
+                activeColor="#ffd700"
+                className="fs-2 m-0 mx-auto"
+              />
+              <span className="ms-2">(4.5)</span>
+            </div>
           </Card.Body>
         </Card>
       </Link>

@@ -28,7 +28,7 @@
   .product-desc {
     font-size: 12px;
     margin: 0;
-    line-height: 13px;
+    line-height: 10px;
   }
   .product-current-price {
     font-size: 14px !important;
@@ -38,5 +38,37 @@
   }
   .product-img {
     height: 180px !important;
+  }
+}
+@media (max-width: 400px) {
+  .product-title {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .product-img {
+    height: 150px !important;
+  }
+}
+@media (max-width: 1024px) {
+  .product-title {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .product-img {
+    height: 180px !important;
+  }
+  .product-desc {
+    font-size: 12px;
+    margin: 0;
+    line-height: 13px;
+  }
+}
+@media (max-width: 1300px) {
+  .product-title {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .product-img {
+    height: 200px !important;
   }
 }

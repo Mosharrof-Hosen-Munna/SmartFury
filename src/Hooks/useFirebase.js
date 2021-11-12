@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   getAuth,
   signOut,
@@ -17,15 +18,21 @@ const useFirebase = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+  const [databaseUser, setDatabaseUser] = useState({});
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = (history, location) => {
-    setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          uid: result.user.uid,
+          photoUrl: result.user.photoURL,
+        };
+        saveGoogleUserToDatabase(newUser);
         history.push(location.state?.from || "/home");
         setError({});
       })
@@ -45,6 +52,13 @@ const useFirebase = () => {
       .then((result) => {
         setUserName(name);
         const LoginUser = result.user;
+        const newUser = {
+          name: name,
+          email: result.user.email,
+          uid: result.user.uid,
+          photoUrl: result.user.photoURL,
+        };
+        saveUserToDatabase(newUser);
         setUser(LoginUser);
         history.push(location.state?.from || "/home");
         setError({});
@@ -72,6 +86,22 @@ const useFirebase = () => {
       .catch((err) => console.log(err));
   };
 
+  const saveGoogleUserToDatabase = (user) => {
+    const url = `http://localhost:5000/api/users/createUser`;
+    axios
+      .put(url, user)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  const saveUserToDatabase = (user) => {
+    const url = `http://localhost:5000/api/users/createUser`;
+    axios
+      .post(url, user)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
   const logOut = () => {
     setLoading(true);
     signOut(auth)
@@ -92,6 +122,19 @@ const useFirebase = () => {
     });
   }, [auth]);
 
+  useEffect(() => {
+    setLoading(true);
+    if (user) {
+      axios
+        .get(`http://localhost:5000/api/users/${user.uid}`)
+        .then((res) => {
+          setDatabaseUser(res.data);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
   return {
     user,
     setUser,
@@ -102,6 +145,7 @@ const useFirebase = () => {
     handleEmailPasswordLogin,
     loading,
     setLoading,
+    databaseUser,
   };
 };
 

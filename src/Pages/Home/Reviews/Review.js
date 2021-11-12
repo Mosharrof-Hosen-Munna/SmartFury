@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import ReactStars from "react-rating-stars-component";
 import "./Review.css";
 const Review = (review) => {
   const rating = parseInt(review.rating);
@@ -17,7 +16,7 @@ const Review = (review) => {
           src="https://lh3.googleusercontent.com/a-/AOh14GinVNbm6v4LF654Vi_l9YacCnw8_KV4yJGEfDZr4A=s96-c"
           alt=""
         />
-        <Card.Body className="p-3 mt-5  mt-lg-4 pt-5 p-lg-5 position-relative">
+        <Card.Body className="p-3 mt-5  mt-lg-4 pt-5 p-md-3 pt-lg-5 px-lg-4 position-relative">
           <Card.Text className="text-center">
             remove or edit any Submissions without any notice or legal course
             applicable to us in this regard.
@@ -26,13 +25,15 @@ const Review = (review) => {
             <h5 className="fw-bold text-orange">Md Nurul Islam</h5>
             <h6 className="">Traveller</h6>
           </div>
-          <div className="text-center">
-            {[...Array(4).keys()].map((rate) => (
-              <FontAwesomeIcon
-                className="fa-1x text-warning me-3"
-                icon={faStar}
-              />
-            ))}
+          <div className="text-center d-flex justify-content-center">
+            <ReactStars
+              count={5}
+              value={4}
+              size={32}
+              edit={false}
+              activeColor="#ffd700"
+              className="fs-2 mx-auto"
+            />
           </div>
         </Card.Body>
       </Card>

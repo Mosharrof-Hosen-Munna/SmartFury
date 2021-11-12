@@ -14,7 +14,7 @@ import {
 import useAuth from "../../../Hooks/useAuth";
 const DashboardMenu = ({ responsive, width, children, handleClose }) => {
   let { path, url } = useRouteMatch();
-  const { logOut } = useAuth();
+  const { logOut, databaseUser } = useAuth();
   return (
     <div
       style={{ width: `${width}` }}
@@ -22,6 +22,8 @@ const DashboardMenu = ({ responsive, width, children, handleClose }) => {
     >
       {children}
       <ul className="aside-bar-menu p-0  mt-3">
+        {/* {!databaseUser?.role && (
+          <> */}
         <li>
           <NavLink
             onClick={handleClose}
@@ -78,62 +80,68 @@ const DashboardMenu = ({ responsive, width, children, handleClose }) => {
             Give Review
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            className="d-flex align-items-center"
-            activeClassName="aside-item-active"
-            exact
-            to={`${url}/manageOrders`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faLuggageCart} />
-            </div>
-            Manage Orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            className="d-flex align-items-center"
-            activeClassName="aside-item-active"
-            exact
-            to={`${url}/addProduct`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faPlus} />
-            </div>
-            Add Product
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            className="d-flex align-items-center"
-            activeClassName="aside-item-active"
-            exact
-            to={`${url}/makeAdmin`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faUserPlus} />{" "}
-            </div>
-            Make Admin
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            className="d-flex align-items-center"
-            activeClassName="aside-item-active"
-            exact
-            to={`${url}/manageProducts`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faBookReader} />
-            </div>
-            Manage Products
-          </NavLink>
-        </li>
+        {/* </>
+        )} */}
+        {databaseUser?.role === "admin" && (
+          <>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}/manageOrders`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faLuggageCart} />
+                </div>
+                Manage Orders
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}/addProduct`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faPlus} />
+                </div>
+                Add Product
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}/makeAdmin`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faUserPlus} />{" "}
+                </div>
+                Make Admin
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}/manageProducts`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faBookReader} />
+                </div>
+                Manage Products
+              </NavLink>
+            </li>
+          </>
+        )}
       </ul>
       <div
         onClick={logOut}

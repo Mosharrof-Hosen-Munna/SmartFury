@@ -74,6 +74,7 @@ const Login = () => {
                     name="email"
                     type="email"
                     onChange={handleOnChange}
+                    required
                     placeholder="Email Address"
                   />
                 </FloatingLabel>
@@ -83,6 +84,7 @@ const Login = () => {
                     onChange={handleOnChange}
                     type="password"
                     placeholder="Password"
+                    required
                   />
                 </FloatingLabel>
                 <ButtonCommon type="submit" className="w-100 mt-3">
