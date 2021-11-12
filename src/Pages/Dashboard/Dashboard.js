@@ -29,10 +29,10 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="d-flex">
+      <div className="d-flex justify-content-between">
         <DashboardMenu
+          width="25%"
           handleClose={handleClose}
-          asideWidth="100%"
           responsive="d-none d-lg-block"
         >
           <div className="mt-3 fs-2 ms-3 fw-bold ">
@@ -43,22 +43,22 @@ const Dashboard = () => {
           </div>
         </DashboardMenu>
 
-        <div className="w-100 ">
-          <div className="bg-cyan shadow text-white position-fixed w-100 align-items-center d-flex justify-content-between p-2">
+        <div className="w-100">
+          <div className="bg-cyan w-100 text-white align-items-center d-flex justify-content-between p-2">
             <div>
-              <h3 className="d-flex">
-                <div className="d-block d-lg-none">
+              <h4 className="d-flex">
+                <div className="d-block mx-2 d-lg-none">
                   <FontAwesomeIcon
                     onClick={handleShow}
-                    className="menubars me-3"
+                    className="menubars"
                     icon={faBars}
                   />
                 </div>
                 My Dashboard
-              </h3>
+              </h4>
             </div>
             <div className="d-flex align-items-center">
-              <h4 className="me-3"> {user?.displayName}</h4>
+              <h6 className="me-2"> {user?.displayName}</h6>
               <img
                 width="50px"
                 className="rounded-circle p-1 text-white bg-light "
@@ -71,7 +71,6 @@ const Dashboard = () => {
               />
             </div>
           </div>
-          <div style={{ marginBottom: "80px" }}></div>
 
           {/* Offcanvas  start*/}
 
@@ -85,11 +84,7 @@ const Dashboard = () => {
               </div>
             </Offcanvas.Header>
             <Offcanvas.Body closeButton>
-              <DashboardMenu
-                asideWidth="100%"
-                width="100%"
-                handleClose={handleClose}
-              />
+              <DashboardMenu handleClose={handleClose} />
             </Offcanvas.Body>
           </Offcanvas>
           {/* Offcanvas  end*/}

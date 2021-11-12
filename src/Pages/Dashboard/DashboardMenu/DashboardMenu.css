@@ -2,13 +2,9 @@
   list-style: none;
 }
 .dashboard-aside {
-  position: fixed;
-  height: 100vh;
   background-color: white;
 }
-/* .aside-bar-menu li {
-  background-color: crimson;
-} */
+
 .aside-bar-menu li a {
   width: 100%;
   padding: 8px 12px;

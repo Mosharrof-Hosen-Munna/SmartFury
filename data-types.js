@@ -1,5 +1,5 @@
 const product = {
-  image,
+  imageUrl,
   title,
   description,
   category: "small, large, medium",
@@ -19,7 +19,11 @@ const user = {
 const order = {
   uid,
   email,
+  userName,
+
+  productId,
   phone,
+  orderID,
   address,
   quantity,
   totalPrice,
