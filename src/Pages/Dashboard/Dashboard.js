@@ -75,7 +75,7 @@ const Dashboard = () => {
           {/* Offcanvas  start*/}
 
           <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header closeButton={true}>
               <div className="mt-2 fs-2 ms-2 fw-bold ">
                 <Link to="/home" className="text-decoration-none">
                   <span className="text-cyan">Smart</span>

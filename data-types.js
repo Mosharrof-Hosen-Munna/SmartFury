@@ -5,6 +5,7 @@ const product = {
   category: "small, large, medium",
   discountPrice,
   mainPrice,
+  discount,
   ratings,
   brand,
   uid,
