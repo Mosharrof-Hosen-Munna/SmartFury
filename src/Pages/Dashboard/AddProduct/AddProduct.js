@@ -77,7 +77,6 @@ const AddProduct = () => {
         reviews: [],
         uid: user.uid,
       };
-      console.log(newProduct);
       axios
         .post(
           "https://safe-plateau-38626.herokuapp.com/api/products/createProduct",

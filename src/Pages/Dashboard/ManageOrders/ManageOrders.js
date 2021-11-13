@@ -15,18 +15,24 @@ const ManageOrders = () => {
   }, [update]);
 
   const handleOrderCancel = (id) => {
-    const url = `https://safe-plateau-38626.herokuapp.com/api/order/${id}/Cancel`;
-    axios
-      .put(url)
-      .then((res) => setUpdate(!update))
-      .catch((err) => console.log(err));
+    const confirm = window.confirm("Are you sure for cancel this order?");
+    if (confirm) {
+      const url = `https://safe-plateau-38626.herokuapp.com/api/order/${id}/Cancel`;
+      axios
+        .put(url)
+        .then((res) => setUpdate(!update))
+        .catch((err) => console.log(err));
+    }
   };
   const handleOrderDelivered = (id) => {
-    const url = `https://safe-plateau-38626.herokuapp.com/api/order/${id}/Delivered`;
-    axios
-      .put(url)
-      .then((res) => setUpdate(!update))
-      .catch((err) => console.log(err));
+    const confirm = window.confirm("Are you sure make it delivered status?");
+    if (confirm) {
+      const url = `https://safe-plateau-38626.herokuapp.com/api/order/${id}/Delivered`;
+      axios
+        .put(url)
+        .then((res) => setUpdate(!update))
+        .catch((err) => console.log(err));
+    }
   };
 
   return (

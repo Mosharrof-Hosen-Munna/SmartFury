@@ -47,7 +47,6 @@ const PlaceOrder = () => {
       .get(url)
       .then((res) => {
         setDatabaseUser(res.data);
-        console.log(res.data);
         if (res.data.address) {
           setIsEdit(false);
           setAddress(res.data.address);

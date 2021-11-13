@@ -90,7 +90,7 @@ const useFirebase = () => {
     const url = `https://safe-plateau-38626.herokuapp.com/api/users/createUser`;
     axios
       .put(url, user)
-      .then((res) => console.log(res.data))
+      .then((res) => {})
       .catch((err) => console.log(err));
   };
 
@@ -98,7 +98,7 @@ const useFirebase = () => {
     const url = `https://safe-plateau-38626.herokuapp.com/api/users/createUser`;
     axios
       .post(url, user)
-      .then((res) => console.log(res.data))
+      .then((res) => {})
       .catch((err) => console.log(err));
   };
 

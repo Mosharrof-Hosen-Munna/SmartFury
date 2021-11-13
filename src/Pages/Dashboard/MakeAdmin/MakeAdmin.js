@@ -22,7 +22,6 @@ const MakeAdmin = () => {
     axios
       .put(url)
       .then((res) => {
-        console.log(res.data);
         setIsSuccess(true);
       })
       .catch((err) => console.log(err));

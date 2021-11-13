@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Product from "../../Shared/Product/Product";
 import ProductSkeleton from "../../Shared/ProductSkeleton/ProductSkeleton";
 
@@ -29,18 +30,23 @@ const Products = ({ limit }) => {
           Recent Products
         </h2>
         {loading ? (
-          <Row xs={2} md={3} lg={4} className="g-4 pt-4">
+          <Row xs={2} md={3} lg={4} className="g-3 g-lg-4 pt-4">
             {[...Array(8).keys()].map((rate) => (
               <ProductSkeleton></ProductSkeleton>
             ))}
           </Row>
         ) : (
-          <Row xs={2} md={3} lg={4} className="g-4 pt-4">
+          <Row xs={2} md={3} lg={4} className="g-3 g-lg-4 pt-4">
             {products.map((product) => (
               <Product product={product}></Product>
             ))}
           </Row>
         )}
+        <div className="text-end mt-4 fs-3">
+          <Link className="text-cyan" to="/explore">
+            See more products
+          </Link>
+        </div>
       </Container>
     </section>
   );

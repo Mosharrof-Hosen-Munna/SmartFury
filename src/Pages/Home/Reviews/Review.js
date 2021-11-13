@@ -5,7 +5,6 @@ import "./Review.css";
 const Review = ({ review, index }) => {
   const { feedbackMessage, rating } = review;
   const { photoUrl, name } = review.profile;
-  console.log(review.profile);
   return (
     <Col className="mt-5 pt-4 mb-lg-0 review">
       <Card

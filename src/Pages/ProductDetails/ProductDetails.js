@@ -24,7 +24,6 @@ const ProductDetails = () => {
       .then((res) => setProduct(res.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(product);
 
   // get related products
   useEffect(() => {
