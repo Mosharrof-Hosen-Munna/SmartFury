@@ -79,7 +79,10 @@ const AddProduct = () => {
       };
       console.log(newProduct);
       axios
-        .post("http://localhost:5000/api/products/createProduct", newProduct)
+        .post(
+          "https://safe-plateau-38626.herokuapp.com/api/products/createProduct",
+          newProduct
+        )
         .then((res) => {
           if (res.data.insertedId) {
             e.target.reset();

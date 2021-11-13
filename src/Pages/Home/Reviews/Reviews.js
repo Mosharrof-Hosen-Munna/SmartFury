@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import Review from "./Review";
 import "./Reviews.css";
+
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/reviews`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/reviews`;
     axios
       .get(url)
       .then((res) => setReviews(res.data))

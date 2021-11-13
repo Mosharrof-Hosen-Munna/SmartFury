@@ -27,7 +27,7 @@ const GiveReview = () => {
       },
       uid: user.uid,
     };
-    const url = `http://localhost:5000/api/reviews/createReview`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/reviews/createReview`;
     axios
       .post(url, reviewData)
       .then((res) => {

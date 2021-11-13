@@ -4,12 +4,15 @@ import { Container, Row } from "react-bootstrap";
 import Product from "../../Shared/Product/Product";
 import ProductSkeleton from "../../Shared/ProductSkeleton/ProductSkeleton";
 
-const Products = () => {
+const Products = ({ limit }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = `http://localhost:5000/api/products/limit/8`;
+    let url = `https://safe-plateau-38626.herokuapp.com/api/products/limit/8`;
+    if (limit) {
+      url = `https://safe-plateau-38626.herokuapp.com/api/products/limit/${limit}`;
+    }
     axios
       .get(url)
       .then((res) => {

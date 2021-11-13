@@ -16,7 +16,7 @@ const Explore = () => {
 
   useEffect(() => {
     setLoading(true);
-    const url = `http://localhost:5000/api/products?filter=${filter}`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/products?filter=${filter}`;
     axios
       .get(url)
       .then((res) => {

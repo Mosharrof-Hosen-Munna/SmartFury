@@ -10,6 +10,7 @@ import {
   faBookReader,
   faPlus,
   faUserPlus,
+  faHouseUser,
 } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../../Hooks/useAuth";
 const DashboardMenu = ({ responsive, width, children, handleClose }) => {
@@ -22,66 +23,80 @@ const DashboardMenu = ({ responsive, width, children, handleClose }) => {
     >
       {children}
       <ul className="aside-bar-menu p-0  mt-3">
-        {/* {!databaseUser?.role && (
-          <> */}
         <li>
           <NavLink
             onClick={handleClose}
             className="d-flex align-items-center"
             activeClassName="aside-item-active"
             exact
-            to={`${url}`}
+            to={`/home`}
           >
             <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faHome} />
+              <FontAwesomeIcon className=" me-2" icon={faHouseUser} />
             </div>
-            Dashboard
+            Home
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            activeClassName="aside-item-active"
-            className="d-flex align-items-center"
-            exact
-            to={`${url}/myOrders`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faLuggageCart} />
-            </div>
-            My Orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            className="d-flex align-items-center"
-            activeClassName="aside-item-active"
-            exact
-            to={`${url}/payment`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className="me-2" icon={faMoneyCheckAlt} />
-            </div>
-            Payment
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={handleClose}
-            className="d-flex align-items-center"
-            activeClassName="aside-item-active"
-            exact
-            to={`${url}/giveReview`}
-          >
-            <div style={{ width: "40px" }}>
-              <FontAwesomeIcon className=" me-2" icon={faBookReader} />{" "}
-            </div>
-            Give Review
-          </NavLink>
-        </li>
-        {/* </>
-        )} */}
+        {!databaseUser?.role && (
+          <>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faHome} />
+                </div>
+                Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                activeClassName="aside-item-active"
+                className="d-flex align-items-center"
+                exact
+                to={`${url}/myOrders`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faLuggageCart} />
+                </div>
+                My Orders
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}/payment`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className="me-2" icon={faMoneyCheckAlt} />
+                </div>
+                Payment
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={handleClose}
+                className="d-flex align-items-center"
+                activeClassName="aside-item-active"
+                exact
+                to={`${url}/giveReview`}
+              >
+                <div style={{ width: "40px" }}>
+                  <FontAwesomeIcon className=" me-2" icon={faBookReader} />{" "}
+                </div>
+                Give Review
+              </NavLink>
+            </li>
+          </>
+        )}
         {databaseUser?.role === "admin" && (
           <>
             <li>

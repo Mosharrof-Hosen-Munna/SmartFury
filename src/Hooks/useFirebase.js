@@ -87,7 +87,7 @@ const useFirebase = () => {
   };
 
   const saveGoogleUserToDatabase = (user) => {
-    const url = `http://localhost:5000/api/users/createUser`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/users/createUser`;
     axios
       .put(url, user)
       .then((res) => console.log(res.data))
@@ -95,7 +95,7 @@ const useFirebase = () => {
   };
 
   const saveUserToDatabase = (user) => {
-    const url = `http://localhost:5000/api/users/createUser`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/users/createUser`;
     axios
       .post(url, user)
       .then((res) => console.log(res.data))
@@ -126,7 +126,7 @@ const useFirebase = () => {
     setLoading(true);
     if (user) {
       axios
-        .get(`http://localhost:5000/api/users/${user.uid}`)
+        .get(`https://safe-plateau-38626.herokuapp.com/api/users/${user.uid}`)
         .then((res) => {
           setDatabaseUser(res.data);
           setLoading(false);

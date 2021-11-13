@@ -74,7 +74,11 @@ const HomeBanner = () => {
                       ৳ 13200
                     </span>
                   </div>
-                  <ButtonCommon btnSize="lg">Explore Collections</ButtonCommon>
+                  <Link to="/explore">
+                    <ButtonCommon btnSize="lg">
+                      Explore Collections
+                    </ButtonCommon>
+                  </Link>
                 </div>
               </Col>
               <Col>
@@ -105,7 +109,11 @@ const HomeBanner = () => {
                       ৳ 16300
                     </span>
                   </div>
-                  <ButtonCommon btnSize="lg">Explore Collections</ButtonCommon>
+                  <Link to="/explore">
+                    <ButtonCommon btnSize="lg">
+                      Explore Collections
+                    </ButtonCommon>
+                  </Link>
                 </div>
               </Col>
               <Col>

@@ -34,14 +34,16 @@ const Navigation = () => {
               >
                 Explore
               </NavLink>
-              <NavLink
-                exact
-                activeClassName="text-cyan"
-                className="nav-link"
-                to="/dashboard"
-              >
-                Dashboard
-              </NavLink>
+              {user && (
+                <NavLink
+                  exact
+                  activeClassName="text-cyan"
+                  className="nav-link"
+                  to="/dashboard"
+                >
+                  Dashboard
+                </NavLink>
+              )}
             </Nav>
             <div className="me-2">{user?.displayName}</div>
             <div>

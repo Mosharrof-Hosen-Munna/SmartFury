@@ -4,7 +4,7 @@
   color: white;
 }
 .review-card-active {
-  background-color: #01a3a4;
+  background-color: #01a3a4 !important;
   color: white;
 }
 .review-message {

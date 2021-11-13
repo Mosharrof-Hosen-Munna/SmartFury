@@ -18,7 +18,7 @@ const MakeAdmin = () => {
 
   const handleAdminSubmit = (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/api/admin/new/${email}`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/admin/new/${email}`;
     axios
       .put(url)
       .then((res) => {

@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# smartfury
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Type of this application is a niche e-commerce site. where an user can buy a product . give their review , manage their product and order . The main feature of this website is manage dashboard by an admin and also an user. But here some limitation of an normal user to manage admin panel. This website mainly make to sell watch._
 
-## Available Scripts
+_Our goal is to provide a good services by selling best quality product_
 
-In the project directory, you can run:
+_[x] If you want to test this product as a admin login by this information: Email: admin@admin.com , Password: 123456_
 
-### `yarn start`
+## Technology stack used in this application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Front End
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [x] JavaScript
+- [x] React
+- [x] Bootstrap
+- [x] Font-awesome
+- [x] React-Router-dom
+- [x] firebase
 
-### `yarn test`
+## Back End
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] Node js
+- [x] Express js
+- [x] dotenv
 
-### `yarn build`
+## To run this application you need follow below steps
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Clone the application front End from github using this link:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] https://github.com/programming-hero-web-course-4/niche-website-client-side-Mosharrof-Hosen-Munna
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Website link
 
-### `yarn eject`
+- [x] Live Site Link: https://smartfury-0.web.app/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## backend Github Code link
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-[x] https://github.com/programming-hero-web-course-4/niche-website-server-side-Mosharrof-Hosen-Munna
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> From the project directory run: -
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [x] npm install.
+  > Once the node_modules installed -
+- [x] run: npm start to start the application
+      n

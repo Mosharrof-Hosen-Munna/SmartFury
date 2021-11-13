@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Offcanvas, Button } from "react-bootstrap";
-import {
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { Offcanvas } from "react-bootstrap";
+import { Switch, Link, useRouteMatch, Route } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../Hooks/useAuth";
@@ -19,7 +13,7 @@ import ManageProducts from "./ManageProducts/ManageProducts";
 import MyOrders from "./MyOrders/MyOrders";
 import Payment from "./Payment/Payment";
 import AdminRoute from "./AdminRoute/AdminRoute";
-import axios from "axios";
+import DashboardHome from "./DashboardHome/DashboardHome";
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -33,7 +27,7 @@ const Dashboard = () => {
     <>
       <div className="d-flex justify-content-between">
         <DashboardMenu
-          width="25%"
+          width="28%"
           handleClose={handleClose}
           responsive="d-none d-lg-block"
         >
@@ -85,7 +79,7 @@ const Dashboard = () => {
                 </Link>
               </div>
             </Offcanvas.Header>
-            <Offcanvas.Body closeButton>
+            <Offcanvas.Body closeButton={true}>
               <DashboardMenu handleClose={handleClose} />
             </Offcanvas.Body>
           </Offcanvas>
@@ -93,7 +87,7 @@ const Dashboard = () => {
 
           <Switch>
             <Route exact path={path}>
-              <h3>Dashboard</h3>
+              <DashboardHome></DashboardHome>
             </Route>
             <Route path={`${path}/myOrders`}>
               <MyOrders></MyOrders>

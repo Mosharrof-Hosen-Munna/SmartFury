@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
   // get single product
   useEffect(() => {
-    const url = `http://localhost:5000/api/products/${id}`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/products/${id}`;
     axios
       .get(url)
       .then((res) => setProduct(res.data))
@@ -29,7 +29,7 @@ const ProductDetails = () => {
   // get related products
   useEffect(() => {
     if (product) {
-      const url = `http://localhost:5000/products/related?category=${product?.category}`;
+      const url = `https://safe-plateau-38626.herokuapp.com/products/related?category=${product?.category}`;
       axios
         .get(url)
         .then((res) => {
@@ -108,15 +108,15 @@ const ProductDetails = () => {
                   aria-label="Basic example"
                 >
                   <ButtonCommon
-                    style={{ width: "60px" }}
-                    className="fw-bold fs-4"
+                    style={{ width: "50px" }}
+                    className="fw-bold fs-5"
                     onClick={decreaseQuantity}
                     disabled={orderQuantity === 1}
                   >
                     -
                   </ButtonCommon>
                   <button
-                    style={{ width: "60px" }}
+                    style={{ width: "50px" }}
                     type="button"
                     disabled
                     className="btn btn-white fs-3 fw-bold"
@@ -125,15 +125,15 @@ const ProductDetails = () => {
                   </button>
                   <ButtonCommon
                     onClick={increaseQuantity}
-                    style={{ width: "60px" }}
-                    className="fw-bold fs-4"
+                    style={{ width: "50px" }}
+                    className="fw-bold fs-5"
                     disabled={orderQuantity === 5}
                   >
                     +
                   </ButtonCommon>
                 </div>
                 <Link to={`/order/${product?._id}?quantity=${orderQuantity}`}>
-                  <ButtonCommon className="w-100 py-3 mt-3">
+                  <ButtonCommon className="w-100 py-2 mt-3">
                     Buy Now
                   </ButtonCommon>
                 </Link>

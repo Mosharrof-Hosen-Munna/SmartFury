@@ -33,7 +33,7 @@ const PlaceOrder = () => {
 
   // load single product by id
   useEffect(() => {
-    const url = `http://localhost:5000/api/products/${productID}`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/products/${productID}`;
     axios
       .get(url)
       .then((res) => setOrderProduct(res.data))
@@ -42,7 +42,7 @@ const PlaceOrder = () => {
 
   // load user data from database
   useEffect(() => {
-    const url = `http://localhost:5000/api/users/${user.uid}`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/users/${user.uid}`;
     axios
       .get(url)
       .then((res) => {
@@ -76,7 +76,7 @@ const PlaceOrder = () => {
         totalPrice: Total,
         orderStatus: "Pending",
       };
-      const URL = `http://localhost:5000/api/orders/createOrder`;
+      const URL = `https://safe-plateau-38626.herokuapp.com/api/orders/createOrder`;
       axios
         .post(URL, orderedData)
         .then((res) => {
@@ -101,7 +101,7 @@ const PlaceOrder = () => {
 
   const saveAddressDatabase = (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/api/user/newAddress/${user.uid}`;
+    const url = `https://safe-plateau-38626.herokuapp.com/api/user/newAddress/${user.uid}`;
     if (
       address.country &&
       address.city &&
@@ -127,7 +127,7 @@ const PlaceOrder = () => {
   return (
     <>
       <Navigation />
-      <section className="py-4">
+      <section style={{ minHeight: "80vh" }} className="py-5">
         <Container>
           <Row className="g-4">
             <Col xs={12} md={7} lg={7}>
@@ -174,14 +174,6 @@ const PlaceOrder = () => {
               </Row>
             </Col>
             <Col xs={12} md={5} lg={5}>
-              <div className="text-center">
-                <ButtonCommon
-                  onClick={handlePlaceOrder}
-                  className="w-100 mx-auto"
-                >
-                  Place Order
-                </ButtonCommon>
-              </div>
               <h4 className="text-cyan-900 my-2 text-center">
                 Shipping and Billing
               </h4>
