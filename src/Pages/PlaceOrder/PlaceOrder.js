@@ -9,7 +9,7 @@ import {
   Button,
   FormControl,
 } from "react-bootstrap";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { ButtonCommon } from "../Shared/CustomButton/CustomButton";
 import Footer from "../Shared/Footer/Footer";
@@ -58,7 +58,36 @@ const PlaceOrder = () => {
       .catch((err) => console.log(err));
   }, [hasAddress]);
 
-  const handlePlaceOrder = () => {};
+  const history = useHistory();
+
+  const handlePlaceOrder = () => {
+    if (!databaseUser?.address) {
+      alert("Please add shipping addresss");
+      return;
+    } else {
+      const orderedData = {
+        uid: user.uid,
+        email: user.email,
+        userName: user.displayName,
+        address: address,
+        productId: productID,
+        orderId: Math.ceil(Math.random() * 6431316763136431),
+        quantity: quantity,
+        totalPrice: Total,
+        orderStatus: "Pending",
+      };
+      const URL = `http://localhost:5000/api/orders/createOrder`;
+      axios
+        .post(URL, orderedData)
+        .then((res) => {
+          if (res.data.insertedId) {
+            alert("Your Order Placed Successful! Continue Shopping!");
+            history.push("/home");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   const handleChange = (e) => {
     const field = e.target.name;
@@ -146,7 +175,10 @@ const PlaceOrder = () => {
             </Col>
             <Col xs={12} md={5} lg={5}>
               <div className="text-center">
-                <ButtonCommon className="w-100 mx-auto">
+                <ButtonCommon
+                  onClick={handlePlaceOrder}
+                  className="w-100 mx-auto"
+                >
                   Place Order
                 </ButtonCommon>
               </div>
@@ -279,7 +311,11 @@ const PlaceOrder = () => {
                 </h6>
               </div>
               <div className="text-center">
-                <ButtonCommon className="w-100 mx-auto" type="submit">
+                <ButtonCommon
+                  onClick={handlePlaceOrder}
+                  className="w-100 mx-auto"
+                  type="submit"
+                >
                   Place Order
                 </ButtonCommon>
               </div>

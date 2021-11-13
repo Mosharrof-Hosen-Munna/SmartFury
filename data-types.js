@@ -21,9 +21,7 @@ const order = {
   uid,
   email,
   userName,
-
   productId,
-  phone,
   orderID,
   address,
   quantity,

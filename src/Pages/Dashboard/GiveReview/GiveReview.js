@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Col, Form } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Alert, Col, Form } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import useAuth from "../../../Hooks/useAuth";
 import { ButtonCommon } from "../../Shared/CustomButton/CustomButton";
@@ -8,6 +8,7 @@ import { ButtonCommon } from "../../Shared/CustomButton/CustomButton";
 const GiveReview = () => {
   const [rating, setRating] = useState(4);
   const [reviewMessage, setReviewMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const ratingChanged = (newRating) => {
     setRating(newRating);
   };
@@ -30,11 +31,16 @@ const GiveReview = () => {
     axios
       .post(url, reviewData)
       .then((res) => {
-        console.log(res.data);
         e.target.reset();
+        setIsSuccess(true);
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    setTimeout(() => {
+      setIsSuccess(false);
+    }, 4000);
+  }, [isSuccess]);
 
   return (
     <div>
@@ -42,6 +48,9 @@ const GiveReview = () => {
         Share your experience give a review
       </h4>
       <Col lg={7} xs={11} md={8} className="mx-auto">
+        {isSuccess && (
+          <Alert variant="success">Review submit successfully</Alert>
+        )}
         <Form onSubmit={handleReviewSubmit}>
           <h3>Select your rates</h3>
           <ReactStars
