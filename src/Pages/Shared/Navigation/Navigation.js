@@ -11,10 +11,10 @@ const Navigation = () => {
     <div>
       <Navbar className="shadow fw-bold" bg="white" expand="lg">
         <Container>
-          <Navbar.Brand className="fs-3 py-1" href="#home">
+          <Link to="/home" className="fs-3 text-decoration-none py-1">
             <span className="text-cyan">Smart</span>
             <span style={{ color: "#e67e22" }}>Fury</span>
-          </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -43,7 +43,7 @@ const Navigation = () => {
                 Dashboard
               </NavLink>
             </Nav>
-            <div>{user?.displayName}</div>
+            <div className="me-2">{user?.displayName}</div>
             <div>
               {user ? (
                 <Button onClick={logOut} variant="danger">

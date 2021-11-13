@@ -4,21 +4,15 @@ import ReactStars from "react-rating-stars-component";
 import "./Product.css";
 import { Link } from "react-router-dom";
 const Product = ({ product }) => {
-  const {
-    _id,
-    imgUrl,
-    description,
-    discountPrice,
-    mainPrice,
-    discountPercent,
-    ratings,
-  } = product;
-
-  console.log(product);
+  const { _id, title, imgUrl, discountPrice, mainPrice, discountPercent } =
+    product;
 
   return (
     <Col>
-      <Link to={`/product/${_id}`} className="text-decoration-none text-dark">
+      <Link
+        to={`/product/details/${_id}`}
+        className="text-decoration-none text-dark"
+      >
         <Card className="h-100 border-0 product-card">
           <Card.Img
             src={imgUrl}
@@ -29,9 +23,9 @@ const Product = ({ product }) => {
             -{discountPercent}%
           </span>
           <Card.Body className="p-1 py-2 p-md-2">
-            <Card.Text className="product-desc mb-1 ">{description}</Card.Text>
+            <Card.Text className="product-desc mb-1 ">{title}</Card.Text>
             <div className="d-block d-flex align-items-center mb-1">
-              <span className="text-cyan me-2 fs-5 product-current-price">
+              <span className="text-cyan me-2 fs-4 product-current-price">
                 ৳ {discountPrice}
                 {"  "}
               </span>

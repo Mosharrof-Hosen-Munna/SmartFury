@@ -16,6 +16,8 @@ import PrivateRoute, {
   AuthenticationPrivateRoute,
 } from "./Pages/PrivateRoute/PrivateRoute";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import PlaceOrder from "./Pages/PlaceOrder/PlaceOrder";
 
 function App() {
   return (
@@ -29,9 +31,15 @@ function App() {
           <Route exact path="/home">
             <Home></Home>
           </Route>
+          <Route exact path="/product/details/:id">
+            <ProductDetails></ProductDetails>
+          </Route>
           <Route exact path="/explore">
             <Explore></Explore>
           </Route>
+          <PrivateRoute path="/order/:productID">
+            <PlaceOrder></PlaceOrder>
+          </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>

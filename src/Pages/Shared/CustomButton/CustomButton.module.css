@@ -8,6 +8,9 @@
   background-color: #0fb9b1;
   transition: 0.3s;
 }
+.common_button:disabled {
+  background-color: grey;
+}
 .common_button.button_lg {
   padding: 10px 16px;
   font-size: 20px;

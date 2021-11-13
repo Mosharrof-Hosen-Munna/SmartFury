@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Carousel, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { ButtonCommon } from "../../Shared/CustomButton/CustomButton";
 
 const HomeBanner = () => {
@@ -37,7 +38,11 @@ const HomeBanner = () => {
                       ৳ 22000
                     </span>
                   </div>
-                  <ButtonCommon btnSize="lg">Explore Collections</ButtonCommon>
+                  <Link to="/explore">
+                    <ButtonCommon btnSize="lg">
+                      Explore Collections
+                    </ButtonCommon>
+                  </Link>
                 </div>
               </Col>
               <Col>

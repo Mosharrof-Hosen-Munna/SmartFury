@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Col, Form } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
@@ -25,6 +26,14 @@ const GiveReview = () => {
       },
       uid: user.uid,
     };
+    const url = `http://localhost:5000/api/reviews/createReview`;
+    axios
+      .post(url, reviewData)
+      .then((res) => {
+        console.log(res.data);
+        e.target.reset();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
