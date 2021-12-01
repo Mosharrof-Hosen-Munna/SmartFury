@@ -35,7 +35,7 @@ _[x] If you want to test this product as a admin login by this information: Emai
 
 ## backend Github Code link
 
--[x] https://github.com/programming-hero-web-course-4/niche-website-server-side-Mosharrof-Hosen-Munna
+-[x] https://github.com/Mosharrof-Hosen-Munna/SmartFury-server
 
 > From the project directory run: -
 
