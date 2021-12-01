@@ -27,7 +27,7 @@ _[x] If you want to test this product as a admin login by this information: Emai
 
 > Clone the application front End from github using this link:
 
-- [x] https://github.com/programming-hero-web-course-4/niche-website-client-side-Mosharrof-Hosen-Munna
+- [x] https://github.com/Mosharrof-Hosen-Munna/SmartFury
 
 ## Website link
 
